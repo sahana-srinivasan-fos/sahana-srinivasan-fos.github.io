@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAHANA SRINIVASAN — 10 Billion Percent Functional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-pink: #ff006e;
+            --neon-blue: #00f5ff;
+            --neon-purple: #b000ff;
+            --neon-green: #39ff14;
+            --neon-yellow: #fff01f;
+            --neon-orange: #ff6b35;
+            --dark-bg: #0a0a0f;
+            --card-bg: rgba(20, 20, 35, 0.8);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">🧠</text></svg>'), auto;
+        }
+
+        /* Floating background elements */
+        .bg-floaters {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floater {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); }
+            50% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 0.3s infinite;
+            color: var(--neon-pink);
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 0.3s infinite;
+            color: var(--neon-blue);
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, 2px); }
+            25% { clip-path: inset(30% 0 40% 0); transform: translate(2px, -2px); }
+            50% { clip-path: inset(60% 0 20% 0); transform: translate(-2px, 2px); }
+            75% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, -2px); }
+            25% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 2px); }
+            50% { clip-path: inset(20% 0 60% 0); transform: translate(2px, -2px); }
+            75% { clip-path: inset(5% 0 80% 0); transform: translate(-2px, 2px); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--neon-purple);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 20px var(--neon-purple)); }
+            50% { filter: drop-shadow(0 0 40px var(--neon-pink)); }
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--neon-blue);
+            margin-bottom: 2rem;
+            animation: typewriter 3s steps(40) infinite;
+        }
+
+        @keyframes typewriter {
+            0%, 100% { width: 0; }
+            50% { width: 100%; }
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--neon-green);
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--neon-green);
+            border-radius: 10px;
+            background: rgba(57, 255, 20, 0.1);
+            animation: border-pulse 2s infinite;
+        }
+
+        @keyframes border-pulse {
+            0%, 100% { box-shadow: 0 0 10px var(--neon-green); }
+            50% { box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green); }
+        }
+
+        .hero .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-link:hover::before {
+            left: 100%;
+        }
+
+        .contact-link:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 0 30px var(--neon-pink);
+        }
+
+        /* Domain Expansion Banner */
+        .domain-expansion {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+            padding: 1rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: scroll-text 10s linear infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes scroll-text {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::before {
+            content: '⚡';
+            position: absolute;
+            left: -40px;
+            animation: bounce 1s infinite;
+        }
+
+        .section-title::after {
+            content: '⚡';
+            position: absolute;
+            right: -40px;
+            animation: bounce 1s infinite reverse;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--neon-purple);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, var(--neon-purple));
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(176, 0, 255, 0.3);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+            border-radius: 13px;
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* Skills Section */
+        .skills-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-left: 4px solid var(--neon-green);
+            border-radius: 0 15px 15px 0;
+            animation: slide-in 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slide-in {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .skill-category:nth-child(1) { animation-delay: 0.1s; }
+        .skill-category:nth-child(2) { animation-delay: 0.2s; }
+        .skill-category:nth-child(3) { animation-delay: 0.3s; }
+        .skill-category:nth-child(4) { animation-delay: 0.4s; }
+        .skill-category:nth-child(5) { animation-delay: 0.5s; }
+        .skill-category:nth-child(6) { animation-delay: 0.6s; }
+        .skill-category:nth-child(7) { animation-delay: 0.7s; }
+        .skill-category:nth-child(8) { animation-delay: 0.8s; }
+
+        .skill-category h4 {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            transform: scale(1.1);
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 2px solid var(--neon-blue);
+            position: relative;
+            width: 45%;
+            animation: fade-in 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            content: '';
+            position: absolute;
+            left: -12%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .timeline-item:nth-child(even)::before {
+            content: '';
+            position: absolute;
+            right: -12%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-purple);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .timeline-item h4 {
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(176, 0, 255, 0.1));
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--neon-yellow);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-left: 4px solid var(--neon-yellow);
+            border-right: 4px solid var(--neon-yellow);
+            animation: quote-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes quote-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 240, 31, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 240, 31, 0.6); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            border-top: 2px solid var(--neon-purple);
+        }
+
+        footer p {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .senku-emoji {
+            font-size: 3rem;
+            animation: spin 3s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Cursed Button */
+        .cursed-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1000;
+            animation: cursed-pulse 1s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+
+        .cursed-button:hover {
+            transform: scale(1.2);
+            animation: cursed-spin 0.5s linear infinite;
+        }
+
+        @keyframes cursed-pulse {
+            0%, 100% { box-shadow: 0 0 20px var(--neon-pink); }
+            50% { box-shadow: 0 0 40px var(--neon-purple); }
+        }
+
+        @keyframes cursed-spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 3px solid var(--neon-green);
+            max-width: 500px;
+            text-align: center;
+            animation: modal-pop 0.3s ease-out;
+        }
+
+        @keyframes modal-pop {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .modal-content h2 {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-close {
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: var(--neon-pink);
+            border: none;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--neon-purple);
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: -30px;
+                right: auto;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin: 0 1rem;
+            }
+        }
+
+        /* Particle effect on click */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.5rem;
+            animation: particle-fly 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes particle-fly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-emoji {
+            font-size: 5rem;
+            animation: loader-bounce 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes loader-bounce {
+            from { transform: translateY(-20px); }
+            to { transform: translateY(20px); }
+        }
+
+        .loader-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin-top: 1rem;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--neon-pink), var(--neon-purple));
+            border-radius: 5px;
+        }
+
+        /* Floating emoji trail */
+        .trail {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            animation: trail-fade 1s ease-out forwards;
+            z-index: 9998;
+        }
+
+        @keyframes trail-fade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0) translateY(-50px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-emoji">🧪</div>
+            <div class="loader-text">REVIVING CIVILIZATION...</div>
+        </div>
+    </div>
+
+    <!-- Background Floaters -->
+    <div class="bg-floaters" id="bgFloaters"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo glitch" data-text="SAHANA.SRINIVASAN">SAHANA.SRINIVASAN</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Arsenal</a>
+            <a href="#projects">Creations</a>
+            <a href="#experience">Battles</a>
+            <a href="#education">Academia</a>
+        </nav>
+    </header>
+
+    <!-- Domain Expansion Banner -->
+    <div class="domain-expansion">
+        🧬 DOMAIN EXPANSION: SCIENTIFIC KINGDOM — 10 BILLION PERCENT — ONE MILLION COMMITS 🧬
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <h1 class="glitch" data-text="SAHANA SRINIVASAN">SAHANA SRINIVASAN</h1>
+        <p class="subtitle">Special Grade Data Science & AI Engineer ✦ Professional Brain-Rot Enthusiast ✦ Certified Science User</p>
+        <div class="tagline">
+            [ Senku's brain. Gojo's confidence. Zero hours of sleep. Infinite WIPs. ]
+        </div>
+        <div class="contact-info">
+            <a href="mailto:email@example.com" class="contact-link">📧 Email</a>
+            <a href="#" class="contact-link">💼 LinkedIn</a>
+            <a href="#" class="contact-link">🐙 GitHub</a>
+            <a href="tel:+917338887104" class="contact-link">📱 +91 73388 87104</a>
+        </div>
+        <p style="margin-top: 2rem; color: var(--neon-yellow);">📍 Chennai, India</p>
+    </section>
+
+    <!-- Sorcery Summary -->
+    <section>
+        <h2 class="section-title">SORCERY SUMMARY</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🎓</span>
+                    <h3>IIT Madras Graduate</h3>
+                    <p>10 Billion Percent functional. Scientifically speaking, I revived end-to-end ML applications from the Stone World of broken codebases and deployed them to production while everyone else was still reading the tutorial.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🚀</span>
+                    <h3>Full-Stack Sorcerer</h3>
+                    <p>I build RAG Chatbots, backend APIs, full-stack apps, and actual Play Store-published Android apps — live, in the wild, terrorising users.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🔮</span>
+                    <h3>Cursed Technique</h3>
+                    <p>Making things that actually work. Powered by TypeScript, FastAPI, GCP, and a Senku-grade refusal to accept that something is impossible. Not vibe-coding. Manifesting with git commits and peer-reviewed delusion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursed Techniques / Skills -->
+    <section id="skills">
+        <h2 class="section-title">CURSED TECHNIQUES</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h4>⚔️ The Big Three (Main Weapons)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>🌌 Reality Manipulation (Frameworks)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">VueJS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>📜 Binding Vows (Databases)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQLite3</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">GCP</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>👻 Shikigami Workers (Background ops)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Celery</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>🧠 Maximum Output (AI/LLM)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">LLMOps</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>🏰 Scientific Kingdom (MLOps)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">DVC</span>
+                    <span class="skill-tag">MLflow</span>
+                    <span class="skill-tag">Feast</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Monitoring</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>🔬 Reverse Engineering (ML libs)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">XGBoost</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>📱 Mobile Alchemy (App pub.)</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Bubblewrap (Android)</span>
+                    <span class="skill-tag">— yes, really</span>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; color: var(--neon-pink);">
+            » Soft skills: Telling teammates 'it's logically impossible to fail' right before it fails. Classic Senku.
+        </p>
+    </section>
+
+    <!-- Personal Initiatives -->
+    <section id="projects">
+        <h2 class="section-title">PERSONAL INITIATIVES</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--neon-yellow);">Unsupervised. Unhinged. Undefeated.</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🍳</span>
+                    <h3>Alchemeal — Recipe Generator</h3>
+                    <p style="color: var(--neon-green); margin-bottom: 0.5rem;">Live on Play Store | FastAPI + TypeScript + Gemini 2.5 Flash + GCP</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>» Designed, built, deployed, and published a production AI-powered Android app because cereal for every meal is scientifically suboptimal.</li>
+                        <li>» Used Gemini 2.5 Flash to generate recipes. App is live. App is unsupervised. App is fine. Probably.</li>
+                        <li>» Senku moment: "I'll calculate the exact probability of this working." Spoiler: it worked.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🤖</span>
+                    <h3>AI Agents & Bots — The Automated Army</h3>
+                    <p style="color: var(--neon-green); margin-bottom: 0.5rem;">5+ production-grade agents</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>» Shipped workflow agents for email handling, data processing, WhatsApp & Telegram — running without a babysitter.</li>
+                        <li>» 40% efficiency increase. That's not a vibe. That's a statistically significant W with an n > 1.</li>
+                        <li>» Domain Expansion: Infinite Automation. The bots don't sleep. I don't either. We are one.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">📚</span>
+                    <h3>Slate — IITM BS Study Companion</h3>
+                    <p style="color: var(--neon-green); margin-bottom: 0.5rem;">Live on Play Store | FastAPI + JavaScript + Firebase</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>» Built a pocket LMS for IITM BS students because the official portal had the energy of a Stone World cave drawing.</li>
+                        <li>» Students used it. Students thanked me. I was already shipping the next thing.</li>
+                        <li>» Dr. Stone logic: "If the tool doesn't exist, you BUILD the tool. Then you BUILD a Play Store account."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legendary Battles / Academic Projects -->
+    <section id="experience">
+        <h2 class="section-title">LEGENDARY BATTLES</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--neon-yellow);">a.k.a. Academic Projects / Graded Chaos</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>SEEK — AI-Powered LMS Portal</h4>
+                <p class="date">Jan 2025 – Apr 2025</p>
+                <p style="color: var(--neon-blue); margin-bottom: 0.5rem;">Python · Flask · VueJS · RAG · SQLite3 · LangChain</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>» Manifested an AI-powered LMS with a RAG-based chatbot that answers learner queries using actual course documents — not hallucinations, actual documents.</li>
+                    <li>» Cursed technique: Hollow Purple — merging retrieval and generation into something that shouldn't exist but does.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h4>AdVeri — Influencer & Sponsorship Platform</h4>
+                <p class="date">Sept 2024 – Dec 2024</p>
+                <p style="color: var(--neon-blue); margin-bottom: 0.5rem;">Python · Flask · Vue · SQLite3 · Celery · Redis</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>» Full-stack platform connecting influencers and sponsors, complete with visual dashboards — because someone had to.</li>
+                    <li>» Celery + Redis for async tasks. Background jobs running while I contemplate the heat death of the universe.</li>
+                    <li>» Dr. Stone formula: Efficiency = (Output / Input) × 10 Billion. Celery is the catalyst.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h4>CrimeCast — Crime Category Prediction</h4>
+                <p class="date">May 2024 – Aug 2024</p>
+                <p style="color: var(--neon-blue); margin-bottom: 0.5rem;">XGBoost · LightGBM · Matplotlib · Seaborn</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>» 95.94% accuracy. Crime doesn't pay but predicting it gives you a CGPA boost, which is almost the same thing.</li>
+                    <li>» Used XGBoost and LightGBM to predict the future better than my own five-year plan.</li>
+                    <li>» Senku verdict: "This is exhilarating! The model converged faster than expected. Ten billion percent success rate."</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h4>BDM Capstone — Retail Analytics for a Bakery Chain</h4>
+                <p class="date">Jan 2024 – Aug 2024</p>
+                <p style="color: var(--neon-blue); margin-bottom: 0.5rem;">Excel · Data Analysis · Tears</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>» Analysed retail sales and inventory data. My most delicious dataset. The bakery did not hire me. Their loss is statistically significant.</li>
+                    <li>» Delivered actionable strategies for inventory optimisation and sales forecasting using the ancient art of Excel.</li>
+                    <li>» Stone World energy: "We revive civilisation one pivot table at a time."</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section>
+        <h2 class="section-title">PREVIOUS MISSION LOGS</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--neon-yellow);">a.k.a. Work Experience / Before I Went Rogue</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🏢</span>
+                    <h3>Trainee & Intern — HCLTech</h3>
+                    <p style="color: var(--neon-green); margin-bottom: 0.5rem;">Aug 2021 – Dec 2022 | Chennai</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>» Completed corporate training in Oracle, Linux, and the ancient art of soft skills. Survived.</li>
+                        <li>» Built document-processing tools in Python & Flask. Automated my boredom into productivity before anyone noticed.</li>
+                        <li>» Gained foundational enterprise knowledge. Then left to build Play Store apps unsupervised. Character development.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Arc -->
+    <section id="education">
+        <h2 class="section-title">THE ACADEMIC ARC</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--neon-yellow);">Certified by IIT Madras (They cannot take it back)</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🎓</span>
+                    <h3>B.S. in Data Science & Applications</h3>
+                    <p style="color: var(--neon-green);">IIT Madras | Completing May 2026 | CGPA: 7.54</p>
+                    <p>Still cooking</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🎓</span>
+                    <h3>B.Sc. in Data Science & Programming</h3>
+                    <p style="color: var(--neon-green);">IIT Madras | Aug 2025 | CGPA: 8.00</p>
+                    <p>Main character arc: complete</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🎓</span>
+                    <h3>Diploma in Programming</h3>
+                    <p style="color: var(--neon-green);">IIT Madras | Dec 2024 | CGPA: 8.25</p>
+                    <p>"Python goes brrr" unlocked</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">🎓</span>
+                    <h3>Diploma in Data Science</h3>
+                    <p style="color: var(--neon-green);">IIT Madras | Aug 2024 | CGPA: 8.5</p>
+                    <p>First form achieved</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">📖</span>
+                    <h3>Class 12, CBSE</h3>
+                    <p style="color: var(--neon-green);">PCM + IP | 82.40% | Sep 2021</p>
+                    <p>Origin story begins. The prophecy was set.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">📖</span>
+                    <h3>Class 10, ICSE</h3>
+                    <p style="color: var(--neon-green);">84.33% | May 2019</p>
+                    <p>"This PDF was made by enemies. I conquered it anyway."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guild Leadership -->
+    <section>
+        <h2 class="section-title">GUILD LEADERSHIP</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--neon-yellow);">Domain: People Wrangling + Bag Securing</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">💃</span>
+                    <h3>Co-head, Dance Team</h3>
+                    <p>Paradox'22 & Paradox Margazhi'23, IITM</p>
+                    <p>Led humans. They followed. Somehow.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">💰</span>
+                    <h3>Sponsorship Committee</h3>
+                    <p>Paradox'22, Margazhi'23, Paradox'23</p>
+                    <p>Secured the bag. Repeatedly. Professionally.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span class="emoji">👑</span>
+                    <h3>Solutions Architect, FOS Automations</h3>
+                    <p>I lead, guide, and occasionally herd teammates toward success while maintaining the illusion of control.</p>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; color: var(--neon-pink);">
+            Certified multi-domain threat: ships code, dances, negotiates sponsors, deploys to prod, and definitely sleeps (sometimes).
+        </p>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote">
+            "With this treasure I summon... a job offer. Ten billion percent, I will be hired."
+        </div>
+        <p style="margin-top: 2rem; color: var(--neon-blue);">
+            References available. My bots will respond faster than I will. Senku has calculated the probability of a callback: 99.99%.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="senku-emoji">🧪</span>
+        <p>SCIENTIFIC KINGDOM: 10 BILLION PERCENT</p>
+        <p style="color: var(--neon-pink);">Built with peer-reviewed delusion and Senku-grade determination</p>
+        <p style="color: var(--neon-green);">© 2026 Sahana Srinivasan — All rights reserved (probably)</p>
+    </footer>
+
+    <!-- Cursed Button -->
+    <button class="cursed-button" id="cursedBtn">🧠</button>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>🧠 BRAIN ROT ACTIVATED 🧠</h2>
+            <p>You've unlocked the forbidden knowledge!</p>
+            <p>Current brain cells remaining: <span id="brainCells">∞</span></p>
+            <p>Senku approval rating: 10 Billion Percent</p>
+            <p>Gojo confidence level: MAXIMUM</p>
+            <button class="modal-close" id="modalClose">Return to Reality</button>
+        </div>
+    </div>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Background floaters
+        const floaters = ['🧪', '⚗️', '🔬', '🧬', '⚡', '🌌', '🔮', '💫', '✨', '🎭'];
+        const bgFloaters = document.getElementById('bgFloaters');
+
+        for (let i = 0; i < 20; i++) {
+            const floater = document.createElement('div');
+            floater.className = 'floater';
+            floater.textContent = floaters[Math.floor(Math.random() * floaters.length)];
+            floater.style.left = Math.random() * 100 + '%';
+            floater.style.animationDelay = Math.random() * 20 + 's';
+            floater.style.animationDuration = (15 + Math.random() * 10) + 's';
+            bgFloaters.appendChild(floater);
+        }
+
+        // Cursed button
+        const cursedBtn = document.getElementById('cursedBtn');
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+        const brainCells = document.getElementById('brainCells');
+
+        cursedBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            brainCells.textContent = Math.floor(Math.random() * 100) + '%';
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Particle effect on click
+        const particles = ['🧠', '⚡', '✨', '💫', '🔮', '🌟', '💥', '🎭'];
+
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
+                particle.style.setProperty('--ty', (Math.random() - 0.5) * 200 + 'px');
+                document.body.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 1000);
+            }
+        });
+
+        // Mouse trail
+        const trailEmojis = ['🧪', '⚗️', '🔬', '✨'];
+        let lastTrail = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastTrail < 50) return;
+            lastTrail = now;
+
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.textContent = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            document.body.appendChild(trail);
+
+            setTimeout(() => trail.remove(), 1000);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Random glitch effect on title
+        const glitchElements = document.querySelectorAll('.glitch');
+        setInterval(() => {
+            glitchElements.forEach(el => {
+                if (Math.random() > 0.7) {
+                    el.style.animation = 'none';
+                    setTimeout(() => {
+                        el.style.animation = '';
+                    }, 100);
+                }
+            });
+        }, 3000);
+
+        // Easter egg: Konami code
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    document.body.style.animation = 'rainbow 0.5s linear infinite';
+                    alert('🧠 SCIENTIFIC KINGDOM UNLOCKED! 🧠\n\n10 Billion Percent Achievement Unlocked!');
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // Skill tag hover sound effect (visual feedback)
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'scale(1.2) rotate(' + (Math.random() - 0.5) * 20 + 'deg)';
+            });
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = '';
+            });
+        });
+
+        // Card tilt effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Random domain expansion messages
+        const domainMessages = [
+            '🧬 DOMAIN EXPANSION: SCIENTIFIC KINGDOM',
+            '⚡ DOMAIN EXPANSION: INFINITE WIPS',
+            '🔮 DOMAIN EXPANSION: PEER-REVIEWED DELUSION',
+            '🌌 DOMAIN EXPANSION: 10 BILLION PERCENT',
+            '💫 DOMAIN EXPANSION: MANIFESTING REALITY'
+        ];
+
+        const domainBanner = document.querySelector('.domain-expansion');
+        setInterval(() => {
+            domainBanner.textContent = domainMessages[Math.floor(Math.random() * domainMessages.length)];
+        }, 5000);
+    </script>
+</body>
+</html>
